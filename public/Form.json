@@ -1,0 +1,56 @@
+[
+    {
+      "type": "text",
+      "name": "firstName",
+      "placeholder": "Enter your first name"
+    },
+    {
+      "type": "text",
+      "name": "lastName",
+      "placeholder": "Enter your last name"
+    },
+    {
+      "type": "email",
+      "name": "email",
+      "placeholder": "Enter your email address"
+    },
+    {
+      "type": "password",
+      "name": "password",
+      "placeholder": "Enter your password"
+    },
+    {
+      "type": "textarea",
+      "name": "message",
+      "placeholder": "Enter your message"
+    },
+    {
+      "type": "text",
+      "name": "address",
+      "placeholder": "Enter your address"
+    },
+    {
+      "type": "checkbox",
+      "name": "agree",
+      "label": "I agree to the terms and conditions"
+    },
+    {
+      "type": "dropdown",
+      "name": "country",
+      "label": "Select your country",
+      "options": [
+        {"value": "usa", "label": "USA"},
+        {"value": "uk", "label": "UK"},
+        {"value": "canada", "label": "Canada"}
+      ]
+    },
+    {
+      "type": "button",
+      "label": "Submit"
+    },
+    {
+      "type": "button",
+      "label": "Cancel"
+    }
+  ]
+  

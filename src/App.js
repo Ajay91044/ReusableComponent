@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import DynamicTable from './Components/DynamicTable';
+import ReusableTable from './Components/ReusableTable';
+import DataGridTable from './Components/DataGridTable';
+// import other components as needed
 
 function App() {
+
+
+  const postApi1 = "http://localhost:4000/api/tabledatas/addTableData";
+  const getApi1 = "http://localhost:4000/api/tabledatas/getTableData";
+
+  const postApi2 = "http://localhost:4000/api/tabledatas/addDummyData";
+  const getApi12 = "http://localhost:4000/api/tabledatas/getDummyData";
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <DynamicTable  postApi={postApi1} getApi={getApi1}/>
+
+      {/* <ReusableTable postApi={postApi1} getApi={getApi1}/> */}
+
+      {/* <DynamicTable  postApi={postApi2} getApi={getApi12}/> */}
+      {/* <DataGridTable/> */}
+
+      {/* <ReusableTable data={tableData} setData={setTableData} getApi={getApi}/> */}
     </div>
   );
 }
 
 export default App;
+
+
+
+
+      {/* <Counter/>
+     <Counter1/> */}
+      {/* <DarkModeToggle/> */}
+
+      {/* <LifecycleExample /> */}

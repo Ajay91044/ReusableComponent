@@ -1,0 +1,23 @@
+[
+    {
+      "name": "Red",
+      "value": 20,
+      "color": "#FF6384"
+    },
+    {
+      "name": "Blue",
+      "value": 30,
+      "color": "#36A2EB"
+    },
+    {
+      "name": "Yellow",
+      "value": 10,
+      "color": "#FFCE56"
+    },
+    {
+      "name": "Green",
+      "value": 40,
+      "color": "#4CAF50"
+    }
+  ]
+  
