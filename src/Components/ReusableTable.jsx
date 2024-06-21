@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
 
-function ReusableTable({ getApi, setTableData, selectedRows, setSelectedRows, handleSelectRow, tableData }) {
+function ReusableTable({getApi1,setTableData,selectedRows,setSelectedRows,handleSelectRow,tableData
+}) 
+{
+
+    
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filterColumn, setFilterColumn] = useState('');
+    const [filteredData, setFilteredData] = useState([]);
+    const [sortBy, setSortBy] = useState(null);
+    const [sortDirection, setSortDirection] = useState('asc');
     const [allSelected, setAllSelected] = useState(false);
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const tableResponse = await fetch(getApi);
+                const tableResponse = await fetch(getApi1);
                 const tableJsonData = await tableResponse.json();
                 setTableData(tableJsonData.data);
             } catch (error) {
@@ -15,7 +24,23 @@ function ReusableTable({ getApi, setTableData, selectedRows, setSelectedRows, ha
             }
         };
         fetchData();
-    }, [getApi, setTableData]);
+    }, [getApi1, setTableData]);
+
+    useEffect(() => {
+        const filterData = () => {
+            if (searchQuery === '' || filterColumn === '') {
+                setFilteredData(tableData);
+                return;
+            }
+
+            const filtered = tableData.filter(row => {
+                const cellValue = row[filterColumn];
+                return cellValue && cellValue.toString().toLowerCase().includes(searchQuery.toLowerCase());
+            });
+            setFilteredData(filtered);
+        };
+        filterData();
+    }, [searchQuery, filterColumn, tableData]);
 
     const handleCheckboxChange = () => {
         setAllSelected(!allSelected);
@@ -26,50 +51,156 @@ function ReusableTable({ getApi, setTableData, selectedRows, setSelectedRows, ha
         setSelectedRows(newSelectedRows);
     };
 
-    const columns = Object.keys(tableData[0] || {}).filter(key => key !== '_id').map((key) => ({
-        field: key,
-        headerName: key.charAt(0).toUpperCase() + key.slice(1),
-        width: 150,
-        sortable: true,
-        editable: true,
-    }));
+    const handleSort = (key) => {
+        const direction = sortBy === key && sortDirection === 'asc' ? 'desc' : 'asc';
+        setSortBy(key);
+        setSortDirection(direction);
 
-    const rows = tableData.map((row) => ({ ...row, id: row._id }));
+        const sortedData = [...filteredData].sort((a, b) => {
+            if (a[key] < b[key]) return direction === 'asc' ? -1 : 1;
+            if (a[key] > b[key]) return direction === 'asc' ? 1 : -1;
+            return 0;
+        });
 
-    const getRowHeight = () => 30; // Adjust the row height as needed
+        setFilteredData(sortedData);
+    };
+
     return (
-        <div style={{ height: 320, width: '100%' }}>
-            <DataGrid
-            columnHeaderHeight={30}
-                rows={rows}
-                columns={columns}
-                checkboxSelection
-                getRowHeight={getRowHeight}
-                // onCellEditStart={(params) => setSelectedRows(selectedRows)}
-                // onCellEditStop={(params) => setSelectedRows(selectedRows)}
-
-                onSelectionModelChange={(newSelection) => {
-                    const newSelectedRows = {};
-                    newSelection.forEach(id => {
-                        newSelectedRows[id] = { selected: true };
-                        const selectedRow = tableData.find(row => row._id === id);
-                        handleSelectRow(selectedRow);
-                    });
-                    setSelectedRows(newSelectedRows);
-                }}
-                onCellEditCommit={(params) => {
-                    const { id, field, value } = params;
-                    const newData = [...tableData];
-                    const index = newData.findIndex(row => row._id === id);
-                    if (index !== -1) {
-                        newData[index][field] = value;
-                        setTableData(newData);
-                    }
-                }}
-                pageSize={5} // Set your desired page size
-            />
+        <div>
+            <table className="styled-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" checked={allSelected} onChange={handleCheckboxChange} />
+                        </th>
+                        {Object.keys(tableData[0] || {}).filter(key => key !== '_id').map((key, index) => (
+                            <th key={index} onClick={() => handleSort(key)}>
+                                {key} {sortBy === key ? (sortDirection === 'asc' ? '▲' : '▼') : ''}
+                            </th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {filteredData.length > 0 && filteredData.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    checked={!!selectedRows[row._id]?.selected}
+                                    onChange={() => handleSelectRow(row)}
+                                />
+                            </td>
+                            {Object.keys(row || {}).filter(key => key !== '_id').map((key, index) => (
+                                <td key={index}>
+                                    <input
+                                        type="text"
+                                        value={row[key]}
+                                        onChange={(e) => {
+                                            const newData = [...tableData];
+                                            newData[rowIndex][key] = e.target.value;
+                                            setTableData(newData);
+                                        }}
+                                    />
+                                </td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
 
 export default ReusableTable;
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from 'react';
+// import { DataGrid } from '@mui/x-data-grid';
+
+// function ReusableTable({ getApi, setTableData, selectedRows, setSelectedRows, handleSelectRow, tableData }) {
+//     const [allSelected, setAllSelected] = useState(false);
+
+//     useEffect(() => {
+//         const fetchData = async () => {
+//             try {
+//                 const tableResponse = await fetch(getApi);
+//                 const tableJsonData = await tableResponse.json();
+//                 setTableData(tableJsonData.data);
+//             } catch (error) {
+//                 console.error('Error fetching data:', error);
+//             }
+//         };
+//         fetchData();
+//     }, [getApi, setTableData]);
+
+//     const handleCheckboxChange = () => {
+//         setAllSelected(!allSelected);
+//         const newSelectedRows = {};
+//         tableData.forEach(row => {
+//             newSelectedRows[row._id] = { selected: !allSelected };
+//         });
+//         setSelectedRows(newSelectedRows);
+//     };
+
+//     const columns = Object.keys(tableData[0] || {}).filter(key => key !== '_id').map((key) => ({
+//         field: key,
+//         headerName: key.charAt(0).toUpperCase() + key.slice(1),
+//         width: 150,
+//         sortable: true,
+//         editable: true,
+//     }));
+
+//     const rows = tableData.map((row) => ({ ...row, id: row._id }));
+
+//     const getRowHeight = () => 30; // Adjust the row height as needed
+
+//     const handleCellClick = (params) => {
+//         console.log("params", params);
+//     };
+
+//     const handleSelectionModelChange = (newSelection) => {
+//         const newSelectedRows = {};
+//         newSelection.forEach(id => {
+//             newSelectedRows[id] = { selected: true };
+//             const selectedRow = tableData.find(row => row._id === id);
+//             handleSelectRow(selectedRow);
+//         });
+//         setSelectedRows(newSelectedRows);
+//     };
+
+//     const handleCellEditCommit = (params) => {
+//         console.log("celleditcomitParam")
+//         const { id, field, value } = params;
+//         const newData = [...tableData];
+//         const index = newData.findIndex(row => row._id === id);
+//         if (index !== -1) {
+//             newData[index][field] = value;
+//             setTableData(newData);
+//         }
+//     };
+
+//     return (
+//         <div style={{ height: 320, width: '100%' }}>
+//             <DataGrid
+//                 columnHeaderHeight={30}
+//                 rows={rows}
+//                 columns={columns}
+//                 checkboxSelection
+//                 getRowHeight={getRowHeight}
+//                 pageSize={5} // Set your desired page size
+//                 disableRowSelectionOnClick
+//                 onCellClick={handleCellClick}
+//                 onSelectionModelChange={handleSelectionModelChange}
+//                 onCellEditCommit={handleCellEditCommit}
+//             />
+//         </div>
+//     );
+// }
+
+// export default ReusableTable;

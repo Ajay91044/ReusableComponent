@@ -1,36 +1,44 @@
-[
+{
+  "formStructure":[
     {
-      "type": "text",
+      "type": "input",
+      "inputType":"text",
       "name": "firstName",
       "placeholder": "Enter your first name"
     },
     {
-      "type": "text",
+      "type": "input",
+      "inputType":"date",
+      "name": "datePicker"
+    },
+    {
+      "type": "input",
+      "inputType":"password",
+      "name": "lastName",
+      "placeholder": "Enter your password"
+    },
+    {
+      "type": "input",
+      "inputType":"text",
       "name": "lastName",
       "placeholder": "Enter your last name"
     },
     {
-      "type": "email",
+      "type": "input",
+      "inputType":"email",
       "name": "email",
       "placeholder": "Enter your email address"
     },
+  
     {
-      "type": "password",
-      "name": "password",
-      "placeholder": "Enter your password"
-    },
-    {
-      "type": "textarea",
+      "type": "input",
+      "inputType":"text-area",
       "name": "message",
       "placeholder": "Enter your message"
     },
     {
-      "type": "text",
-      "name": "address",
-      "placeholder": "Enter your address"
-    },
-    {
-      "type": "checkbox",
+      "type": "input",
+      "inputType":"checkbox",
       "name": "agree",
       "label": "I agree to the terms and conditions"
     },
@@ -46,11 +54,14 @@
     },
     {
       "type": "button",
+      "buttonType":"Submit",
       "label": "Submit"
     },
     {
       "type": "button",
+      "buttonType":"reset",
       "label": "Cancel"
     }
   ]
   
+}

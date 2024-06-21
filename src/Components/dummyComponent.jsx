@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-function ReusableTable({getApi,setTableData,selectedRows,setSelectedRows,handleSelectRow,tableData
+function ReusableTable({getApi1,setTableData,selectedRows,setSelectedRows,handleSelectRow,tableData
 }) 
 {
 
@@ -17,7 +17,7 @@ function ReusableTable({getApi,setTableData,selectedRows,setSelectedRows,handleS
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const tableResponse = await fetch(getApi);
+                const tableResponse = await fetch(getApi1);
                 const tableJsonData = await tableResponse.json();
                 setTableData(tableJsonData.data);
             } catch (error) {
@@ -25,7 +25,7 @@ function ReusableTable({getApi,setTableData,selectedRows,setSelectedRows,handleS
             }
         };
         fetchData();
-    }, [getApi, setTableData]);
+    }, [getApi1, setTableData]);
 
     useEffect(() => {
         const filterData = () => {

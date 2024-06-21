@@ -3,7 +3,7 @@ import './DynamicTable.css';
 import axios from 'axios';
 import ReusableTable from './ReusableTable';
 
-const DynamicTable = ({postApi,getApi}) => {
+const DynamicTable = ({postApi1,getApi1}) => {
   const [tableData, setTableData] = useState([]);
   const [selectedRows, setSelectedRows] = useState({});
   
@@ -88,7 +88,7 @@ const DynamicTable = ({postApi,getApi}) => {
 // Output: [{name: "", city: "", country: ""}]
 
   const handleRemoveAll = () => {
-    setTableData([{name: "", city: "", country: ""}]);
+    setTableData([{name: "", city: "", country: "",date:""}]);
     
     //here i have to dynamiccaly add the columns name,so that 
     //even after the removing all the data ,the column should be there
@@ -103,7 +103,7 @@ const DynamicTable = ({postApi,getApi}) => {
   
     // setData(dataToSave)
 
-    let {data}=await axios.post(postApi, dataToSave);
+    let {data}=await axios.post(postApi1, dataToSave);
 
     console.log(data)
 
@@ -157,7 +157,7 @@ const DynamicTable = ({postApi,getApi}) => {
         setTableData={setTableData}
         handleSelectRow={handleSelectRow}
         getSelectedRows={getSelectedRows}
-        getApi={getApi}
+        postApi1={postApi1} getApi1={getApi1}
         />
 
      
