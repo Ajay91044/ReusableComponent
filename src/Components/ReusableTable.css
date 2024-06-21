@@ -1,75 +1,36 @@
-/* .table-container {
-    width: 100%;
-    margin: 20px 0;
-  }
-  
-  .table-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .search-box {
-    padding: 8px;
-    width: 100%;
-    max-width: 300px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  .styled-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-  }
-  
-  .styled-table th,
-  .styled-table td {
-    padding: 12px 15px;
-  }
-  
-  .styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  .styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  
-  .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-  }
-  
-  .styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-  }
-  
-  .pagination {
-    margin: 10px 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .pagination button {
-    background-color: #009879;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin: 0 2px;
-    cursor: pointer;
-  }
-  
-  .pagination button.active {
-    background-color: #006d5d;
-  }
-  
-  .pagination button:hover {
-    background-color: #005f4c;
-  }
-   */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+.styled-table th,
+.styled-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.styled-table th {
+  background-color: #f2f2f2;
+  cursor: pointer;
+  user-select: none;
+}
+
+.styled-table th:hover {
+  background-color: #e0e0e0;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.styled-table input[type="checkbox"] {
+  margin: 0;
+  vertical-align: middle;
+}

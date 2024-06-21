@@ -66,7 +66,7 @@ const DynamicTable = ({postApi1,getApi1}) => {
   const handleRemove = () => {
     const selectedRowsIndexes = getSelectedRows();
     if (selectedRowsIndexes.length === 0) {
-      // alert("Please select a row.");
+      alert("Please select a row.");
       return;
     }
     // Create a new table data by filtering out the selected rows
