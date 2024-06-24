@@ -52,21 +52,23 @@ let getTableData = async (req, res) => {
 
 let addDummyData = async (req, res) => {
 
-    let { data } = req.body;
+    let formState = req.body;
+    console.log(formState);
+
     try {
-
-        console.log(req.body)
-
-        // Insert the new documents from req.body
-        let document = await DummyApiCollection.find({})
-        let newTableData;
-
-            newTableData = await DummyApiCollection.deleteMany({});
-
-               await DummyApiCollection.create(req.body);
-
-        console.log(data);
-        res.status(201).send({ message: 'Data saved successfully', data: newTableData });
+        // Check if formState is an array
+        if (Array.isArray(formState)) {
+            // Delete all documents and insert the new array of documents
+            await SignupdataCollection.deleteMany({});
+            let newTableData = await DummyApiCollection.create(formState);
+            res.status(201).send({ message: 'Data saved successfully', data: newTableData });
+        } else if (typeof formState === 'object' && formState !== null) {
+            // Update the document if formState is an object
+            let updatedDocument = await DummyApiCollection.updateOne({ _id: formState._id }, { $set: formState });
+            res.status(201).send({ message: 'Data updated successfully', data: updatedDocument });
+        } else {
+            res.status(400).send({ message: 'Invalid data format' });
+        }
     } catch (err) {
         console.error("Error adding data:", err);
         res.status(500).json({ error: true, message: "Failed to add data", data: { "name": '', "city": '' } });
