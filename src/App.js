@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import DynamicTable from './Components/DynamicTable';
 import ReusableTable from './Components/ReusableTable';
-import DataGridTable from './Components/DataGridTable';
+import DataGridTable from './Components/Dummy/DataGridTable';
 import DynamicForm from './Components/DynamicForm';
 import axios from 'axios';
+import DragAndDropTable from './Components/DragAndDropTable';
 // import other components as needed
 
 function App() {
@@ -14,7 +15,7 @@ let [formData,setFormdata]=useState([]);
   const getApi1 = "http://localhost:4000/api/tabledatas/getTableData";
 
   const postApi2 = "http://localhost:4000/api/tabledatas/addDummyData";
-  const getApi12 = "http://localhost:4000/api/tabledatas/getDummyData";
+  const getApi2 = "http://localhost:4000/api/tabledatas/getDummyData";
 
   const postApi3 = "http://localhost:4000/api/tabledatas/addFormStructre";
   const getApi3 = "http://localhost:4000/api/tabledatas/getFormStructre";
@@ -69,7 +70,11 @@ let [formData,setFormdata]=useState([]);
       {/* <DataGridTable/> */}
 
       {/* <ReusableTable data={tableData} setData={setTableData} getApi={getApi}/> */}
-      <DynamicForm  formData={formData} setFormData={setFormdata} postApi3={postApi3} postApi4={postApi1} getApi1={getApi1} getApi4={getApi4}/>
+     
+     {/* <DynamicForm  formData={formData} setFormData={setFormdata} postApi3={postApi3} postApi4={postApi1} getApi1={getApi1} getApi4={getApi4}/> */}
+    
+     <DragAndDropTable postApi={postApi1} getApi={getApi1} postApi2={postApi2} getApi2={getApi2}/>
+
     </div>
   );
 }
