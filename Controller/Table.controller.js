@@ -1,6 +1,6 @@
 // import datajson from './table.json'
 
-let datajson=require("./table.json")
+let datajson = require("./table.json")
 let SignupdataCollection = require('../Model/Table.model');
 let DummyApiCollection = require('../Model/String.model');
 let FormDataCollection = require('../Model/Form.model');
@@ -31,10 +31,10 @@ let addTableData = async (req, res) => {
     }
 }
 
-let getTableData = async (req, res) => { 
+let getTableData = async (req, res) => {
     try {
         // Fetch all documents from the collection
-        let dataExist=await SignupdataCollection.find();
+        let dataExist = await SignupdataCollection.find();
         // if(!dataExist)
         //     {
         //         res.json({data:{name:"",city:""}});
@@ -42,7 +42,7 @@ let getTableData = async (req, res) => {
         // else{     
         // }
         let tableData = await SignupdataCollection.find().select('-__v');
-        res.json({data:tableData});
+        res.json({ data: tableData });
 
     } catch (err) {
         console.error("Error fetching data:", err);
@@ -57,38 +57,39 @@ let addDummyData = async (req, res) => {
 
     try {
         // Check if formState is an array
-        if (Array.isArray(formState)) {
-            // Delete all documents and insert the new array of documents
-            await SignupdataCollection.deleteMany({});
-            let newTableData = await DummyApiCollection.create(formState);
-            res.status(201).send({ message: 'Data saved successfully', data: newTableData });
-        } else if (typeof formState === 'object' && formState !== null) {
-            // Update the document if formState is an object
-            let updatedDocument = await DummyApiCollection.updateOne({ _id: formState._id }, { $set: formState });
-            res.status(201).send({ message: 'Data updated successfully', data: updatedDocument });
-        } else {
-            res.status(400).send({ message: 'Invalid data format' });
-        }
-    } catch (err) {
+        // Delete all documents and insert the new array of documents
+
+        await DummyApiCollection.deleteMany({});
+        let newTableData = await DummyApiCollection.create(formState);
+        // res.status(201).send({ message: 'Data updated successfully', data: updatedDocument });
+        let UpdatedNewTableData = await DummyApiCollection.find({});
+        res.status(201).send({ message: 'Data saved successfully', data: UpdatedNewTableData });
+
+
+
+    }
+    catch (err) {
         console.error("Error adding data:", err);
         res.status(500).json({ error: true, message: "Failed to add data", data: { "name": '', "city": '' } });
     }
 }
 
 
-let getDummyData = async (req, res) => { 
+let getDummyData = async (req, res) => {
     try {
         // Fetch all documents from the collection
-        let dataExist=await DummyApiCollection.find();
+        let dataExist = await DummyApiCollection.find(); 
         // if(!dataExist)
         //     {
         //         res.json({data:{name:"",city:""}});
         //     }
         // else{
-         
+
         // }
         let tableData = await DummyApiCollection.find().select('-__v');
-        res.json({data:tableData});
+            res.json({ data: tableData });
+        
+       
 
     } catch (err) {
         console.error("Error fetching data:", err);
@@ -98,15 +99,15 @@ let getDummyData = async (req, res) => {
 const addFormStructre = async (req, res) => {
     // let formState = req.body;
     try {
-       // console.log(formState);
+        // console.log(formState);
         // Check if any document exists in the collection
         let document = await FormStructureCollection.findOne({});
         if (document) {
             // console.log(document.formData);
             // Update the existing document's formData field with formState
-            let deleteddoucments= await FormStructureCollection.deleteMany({});
-          let postresponse=  await FormStructureCollection.create(req.body);
-            
+            let deleteddoucments = await FormStructureCollection.deleteMany({});
+            let postresponse = await FormStructureCollection.create(req.body);
+
         } else {
             // Create a new document with the provided formState
             // await FormDataCollection.create({ formData: formState });
@@ -119,19 +120,19 @@ const addFormStructre = async (req, res) => {
     }
 };
 
-let getFormStructre = async (req, res) => { 
+let getFormStructre = async (req, res) => {
     try {
         // Fetch all documents from the collection
-        let dataExist=await FormStructureCollection.find();
+        let dataExist = await FormStructureCollection.find();
         // if(!dataExist)
         //     {
         //         res.json({data:{name:"",city:""}});
         //     }
         // else{
-         
+
         // }
         let formStrucute = await FormStructureCollection.find().select('-__v');
-        res.json({data:formStrucute});
+        res.json({ data: formStrucute });
 
     } catch (err) {
         console.error("Error fetching data:", err);
@@ -153,7 +154,7 @@ const addFormData = async (req, res) => {
         await FormDataCollection.create(req.body);
         if (document) {
             // Update the existing document's formData field with formState
-            
+
         } else {
             // Create a new document with the provided formState
             // await FormDataCollection.create({ formData: formState });
@@ -166,20 +167,20 @@ const addFormData = async (req, res) => {
     }
 };
 
-let getFormData = async (req, res) => { 
+let getFormData = async (req, res) => {
 
     try {
         // Fetch all documents from the collection
-        let dataExist=await FormDataCollection.find();
+        let dataExist = await FormDataCollection.find();
         // if(!dataExist)
         //     {
         //         res.json({data:{name:"",city:""}});
         //     }
         // else{
-         
+
         // }
         let formData = await FormDataCollection.find().select('-__v');
-        res.json({data:formData});
+        res.json({ data: formData });
 
     } catch (err) {
         console.error("Error fetching data:", err);
@@ -189,4 +190,4 @@ let getFormData = async (req, res) => {
 
 
 
-module.exports = { addTableData, getTableData ,addDummyData,getDummyData,addFormStructre,getFormStructre,addFormData,getFormData};
+module.exports = { addTableData, getTableData, addDummyData, getDummyData, addFormStructre, getFormStructre, addFormData, getFormData };
