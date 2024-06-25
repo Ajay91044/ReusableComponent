@@ -1,0 +1,44 @@
+/* styles.css */
+
+/* Custom styles for DataGrid */
+.custom-data-grid {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px; /* Example margin for spacing */
+}
+
+/* Styles for menu list within DataGrid */
+.custom-data-grid .MuiDataGrid-menuList {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Styles for menu items within DataGrid */
+.custom-data-grid .MuiMenuItem-root {
+  padding: 8px 16px;
+}
+
+/* Styles for list item icons within DataGrid */
+.custom-data-grid .MuiListItemIcon-root {
+  margin-right: 8px;
+}
+
+/* Styles for primary text within DataGrid */
+.custom-data-grid .MuiListItemText-primary {
+  font-weight: bold;
+}
+
+/* Styles for touch ripple effect within DataGrid */
+.custom-data-grid .MuiTouchRipple-root {
+  opacity: 0.8;
+}
+
+/* Styles for dividers within DataGrid */
+.custom-data-grid .MuiDivider-root {
+  margin: 8px 0;
+  border-color: #ccc;
+}

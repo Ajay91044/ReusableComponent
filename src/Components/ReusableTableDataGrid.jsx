@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import "./ReusableTableDataGrid"
+import { Draggable } from 'react-beautiful-dnd';
 
-function ReusableTableDataGrid({ tableData, setSelectedRow }) {
+function ReusableTableDataGrid({ tableData, setSelectedRow, newTableData }) {
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState([]);
   const [rowSelectionModel, setRowSelectionModel] = useState([]);
+
+  
 
   useEffect(() => {
     if (tableData.length > 0) {
@@ -16,13 +20,22 @@ function ReusableTableDataGrid({ tableData, setSelectedRow }) {
         editable: true,
       }));
       setColumns(columnsData);
-
-      setRows(tableData); // Use tableData directly without adding additional id
+      setRows(tableData);
+    } else if (newTableData.length > 0) {
+      const keys = Object.keys(newTableData[0]);
+      const columnsData = keys.map((key) => ({
+        field: key,
+        headerName: key.charAt(0).toUpperCase() + key.slice(1),
+        width: 150,
+        editable: true,
+      }));
+      setColumns(columnsData);
+      setRows([]);
     } else {
       setColumns([]);
       setRows([]);
     }
-  }, [tableData]);
+  }, [tableData, newTableData]);
 
   const handleProcessRowUpdate = (newRow) => {
     setRows((prevRows) =>
@@ -49,7 +62,11 @@ function ReusableTableDataGrid({ tableData, setSelectedRow }) {
         processRowUpdate={handleProcessRowUpdate}
         onRowSelectionModelChange={handleSelectionChange}
         rowSelectionModel={rowSelectionModel}
-      
+        rowHeight={40}
+        columnHeaderHeight={40}
+
+        columnFooterHeight={20} 
+        Draggable
       />
     </div>
   );
