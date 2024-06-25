@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import DynamicTable from './Components/DynamicTable';
 import ReusableTable from './Components/ReusableTable';
-import DataGridTable from './Components/Dummy/DataGridTable';
 import DynamicForm from './Components/DynamicForm';
 import axios from 'axios';
 import DragAndDropTable from './Components/DragAndDropTable';
 // import DragDropGrid from './Components/Dragndropfeature/DragnDropGrid';
 import DragDropTable from './Components/Dragndropfeature/DragnDropGrid';
+import DynamicHeader from './Components/Dummy/DynamicHeader';
 // import other components as needed
 
 function App() {
@@ -75,8 +75,11 @@ let [formData,setFormdata]=useState([]);
      
      {/* <DynamicForm  formData={formData} setFormData={setFormdata} postApi3={postApi3} postApi4={postApi1} getApi1={getApi1} getApi4={getApi4}/> */}
     
-     <DragAndDropTable postApi={postApi1} getApi={getApi1} postApi2={postApi2} getApi2={getApi2}/>
+     {/* <DragAndDropTable postApi={postApi1} getApi={getApi1} postApi2={postApi2} getApi2={getApi2}/> */}
      {/* <DragDropTable/> */}
+
+     <DynamicHeader/>
+
     </div>
   );
 }

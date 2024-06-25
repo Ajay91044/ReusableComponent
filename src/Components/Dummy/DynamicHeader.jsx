@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import FactoryIcon from '@mui/icons-material/Factory';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
-import RitsLogo from '../RITS_Logo.png';
+
+import  "./DynamicHeader.css"
 
 function DynamicHeader() {
     const [showLogout, setShowLogout] = useState(false);
@@ -23,7 +24,7 @@ function DynamicHeader() {
     return (
         <nav className='ritsNav'>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <img src={RitsLogo} className='ritslogo' style={{ width: "5vw", height: "4.6vh " }} alt="No image Available" />
+                {/* <img src={RitsLogo} className='ritslogo' style={{ width: "5vw", height: "4.6vh " }} alt="No image Available" /> */}
                 <small style={{ color: 'white', marginLeft: '15px' }}>POD</small>
             </div>
 

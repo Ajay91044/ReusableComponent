@@ -1,0 +1,45 @@
+.ritsNav {
+    /* border:2px solid red; */
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #124561;
+    padding-left:10px ;
+    padding-right:10px ;
+  
+  }
+  
+  /* styles.css */
+  /* styles.css */
+  .logout-option {
+    position: absolute;
+    top: 40px;
+    /* Adjust this value as needed */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    z-index: 1000;
+  }
+  
+  .logout-option button {
+    background-color: #0A6ED1;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .logout-option button:hover {
+    background-color: #084c96;
+  }
+  
+  .ritslogo {
+    width: 5vw !important;
+    height: 4.6vh !important;
+  }
