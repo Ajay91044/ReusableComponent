@@ -6,6 +6,69 @@ let DummyApiCollection = require('../Model/String.model');
 let FormDataCollection = require('../Model/Form.model');
 let FormStructureCollection = require('../Model/FormStructure');
 
+let arraylist=[
+
+{"_id":"SiteBO:RITS",
+"site":"RITS",  
+"description":
+"RITS",
+"type":
+"Production"
+},
+
+{"_id": "SiteBO:EXIDE",
+    "site":"EXIDE",
+    "description": "EXIDE",
+    "type":"Production"
+    },
+    {"_id": "SiteBO:Himalaya",
+        "site":"Himalaya",
+        "description": "Himalaya",
+        "type":"Production"
+        },
+
+]
+let colummnChart=
+[
+    { "name": "Category A", "value": 400 },
+    { "name": "Category B", "value": 300 },
+    { "name": "Category C", "value": 200 },
+    { "name": "Category D", "value": 500 },
+    { "name": "Category E", "value": 600 }
+  ]
+  
+let graphData=[
+    { "time": "2024-06-01", "value": 110 },
+    { "time": "2024-06-02", "value": 75 },
+    { "time": "2024-06-03", "value": 20 },
+    { "time": "2024-06-04", "value": 18 },
+    { "time": "2024-06-05", "value": 25 }
+  ]
+   
+
+  let pieData=[
+    {
+      "name": "Red",
+      "value": 20,
+      "color": "#FF6384"
+    },
+    {
+      "name": "Blue",
+      "value": 30,
+      "color": "#36A2EB"
+    },
+    {
+      "name": "Yellow",
+      "value": 10,
+      "color": "#FFCE56"
+    },
+    {
+      "name": "Green",
+      "value": 40,
+      "color": "#4CAF50"
+    }
+  ]
+  
 
 let addTableData = async (req, res) => {
     let formState = req.body;
@@ -132,8 +195,10 @@ let getFormStructre = async (req, res) => {
 
         // }
         let formStrucute = await FormStructureCollection.find().select('-__v');
-        res.json({ data: formStrucute });
-
+        // res.json({ data: arraylist });
+        // res.json({ data: colummnChart });
+        res.json({ colummnChart: colummnChart ,pieData:pieData,graphData:graphData});
+        
     } catch (err) {
         console.error("Error fetching data:", err);
         res.status(500).json({ error: true, message: "Failed to fetch data" });
