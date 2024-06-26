@@ -7,11 +7,19 @@ import DragAndDropTable from './Components/DragAndDropTable';
 // import DragDropGrid from './Components/Dragndropfeature/DragnDropGrid';
 import DragDropTable from './Components/Dragndropfeature/DragnDropGrid';
 import DynamicHeader from './Components/Dummy/DynamicHeader';
+import Footer from './Components/Dummy/Footer';
+import ColumnChart from './Components/Dummy/ColumnChart';
 // import other components as needed
+import DynamicGraph from './Components/Dummy/DynamicGraph';
+import PieChartComponent from './Components/Dummy/PieChartComponent';
 
 function App() {
 
 let [formData,setFormdata]=useState([]);
+
+let [columnChartData,setColumnChartData]=useState([])
+let [pieData,setPieData]=useState([])
+let [graphData,setGraphData]=useState([])
 
   const postApi1 = "http://localhost:4000/api/tabledatas/addTableData";
   const getApi1 = "http://localhost:4000/api/tabledatas/getTableData";
@@ -59,6 +67,18 @@ let [formData,setFormdata]=useState([]);
     fetchData();
   }, []);//  console.log("original data",data)
 
+  useEffect(()=>
+  {
+    let FetchColumnChartData=async()=>
+      {
+        let {data}=await axios.get(getApi3)
+
+        setColumnChartData(data.colummnChart)
+        setGraphData(data.graphData)
+        setPieData(data.pieData)
+      }
+      FetchColumnChartData();
+  },[])
 
 
   return (
@@ -78,7 +98,15 @@ let [formData,setFormdata]=useState([]);
      {/* <DragAndDropTable postApi={postApi1} getApi={getApi1} postApi2={postApi2} getApi2={getApi2}/> */}
      {/* <DragDropTable/> */}
 
-     <DynamicHeader/>
+     {/* <DynamicHeader getApi3={getApi3}/> */}
+
+     {/* <Footer/> */}
+
+     <ColumnChart data={columnChartData}/>
+     <DynamicGraph data={graphData}/>
+     <PieChartComponent data={pieData}/>
+     <PieChartComponent data={graphData}/>
+
 
     </div>
   );

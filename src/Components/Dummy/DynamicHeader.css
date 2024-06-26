@@ -6,8 +6,8 @@
     justify-content: space-between;
     align-items: center;
     background-color: #124561;
-    padding-left:10px ;
-    padding-right:10px ;
+    padding-left:8px ;
+    padding-right:8px ;
   
   }
   
@@ -43,3 +43,6 @@
     width: 5vw !important;
     height: 4.6vh !important;
   }
+
+
+  
