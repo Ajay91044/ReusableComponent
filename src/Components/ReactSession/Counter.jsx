@@ -6,7 +6,7 @@
 // const Counter = () => {
 //   const [count, setCounter] = useState(0);
 
-//   return (
+//   return ( 
 //     <div style={{ textAlign: "center" }}>
 //       <h2 style={{ marginBottom: "20px" }}>Counter</h2>
 //       <div style={{ display: "flex", justifyContent: "center" }}>

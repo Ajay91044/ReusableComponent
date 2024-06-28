@@ -12,6 +12,9 @@ import ColumnChart from './Components/Dummy/ColumnChart';
 // import other components as needed
 import DynamicGraph from './Components/Dummy/DynamicGraph';
 import PieChartComponent from './Components/Dummy/PieChartComponent';
+import ChartComponent from './Components/Dummy/NewLineGraph';
+import DataConverter from './Components/DataConvertor';
+import PrintAsPdf from './Components/PrintAsPdf';
 
 function App() {
 
@@ -106,7 +109,9 @@ let [graphData,setGraphData]=useState([])
      <DynamicGraph data={graphData}/>
      <PieChartComponent data={pieData}/>
      <PieChartComponent data={graphData}/>
-
+     <ChartComponent/>
+     {/* <DataConverter/> */}
+     <PrintAsPdf/>
 
     </div>
   );
