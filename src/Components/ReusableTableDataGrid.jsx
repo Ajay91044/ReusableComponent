@@ -51,7 +51,7 @@ function ReusableTableDataGrid({ tableData, setSelectedRow, newTableData }) {
   };
 
   return (
-    <div style={{ height: 400, width: '40%' }}>
+    <div style={{ height: 400, width: '40%' ,marginLeft:'10px',marginTop:'10px'}}>
       <DataGrid
         rows={rows}
         columns={columns}

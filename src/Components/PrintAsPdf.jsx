@@ -12,7 +12,7 @@ function PrintAsPdf() {
     };
 
     return (
-        <div className='table-controls'>
+        <div className='table-controls' style={{marginTop:'2px'}}>
             {isBool && <button onClick={exportToPDF}>PDF</button>}
         </div>
     );

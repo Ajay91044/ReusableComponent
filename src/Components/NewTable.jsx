@@ -47,7 +47,7 @@ function NewTable({ newTableData, setSelectedRow, tableData }) {
   };
 
   return (
-    <div style={{ height: 400, width: '40%' }}>
+    <div style={{ height: 400, width: '40%',marginTop:'10px' }}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -60,6 +60,7 @@ function NewTable({ newTableData, setSelectedRow, tableData }) {
         rowSelectionModel={rowSelectionModel}
         rowHeight={40}
         columnHeaderHeight={40}
+        
        
       />
     </div>

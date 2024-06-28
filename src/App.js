@@ -87,29 +87,28 @@ let [graphData,setGraphData]=useState([])
   return (
     <div className="App">
 
-      {/* <DynamicTable   postApi1={postApi1} getApi1={getApi1}/> */}
+      <DynamicTable   postApi1={postApi1} getApi1={getApi1}/>
 
       {/* <ReusableTable postApi={postApi1} getApi={getApi1}/> */}
 
-      {/* <DynamicTable  postApi={postApi2} getApi={getApi12}/> */}
-      {/* <DataGridTable/> */}
+      {/* <DynamicTable  postApi={postApi2} getApi={getApi2}/> */}
 
       {/* <ReusableTable data={tableData} setData={setTableData} getApi={getApi}/> */}
      
-     {/* <DynamicForm  formData={formData} setFormData={setFormdata} postApi3={postApi3} postApi4={postApi1} getApi1={getApi1} getApi4={getApi4}/> */}
+     <DynamicForm  formData={formData} setFormData={setFormdata} postApi3={postApi3} postApi4={postApi1} getApi1={getApi1} getApi4={getApi4}/>
     
-     {/* <DragAndDropTable postApi={postApi1} getApi={getApi1} postApi2={postApi2} getApi2={getApi2}/> */}
+     <DragAndDropTable postApi={postApi1} getApi={getApi1} postApi2={postApi2} getApi2={getApi2}/>
      {/* <DragDropTable/> */}
 
      {/* <DynamicHeader getApi3={getApi3}/> */}
 
      {/* <Footer/> */}
-
+{/* 
      <ColumnChart data={columnChartData}/>
      <DynamicGraph data={graphData}/>
      <PieChartComponent data={pieData}/>
-     <PieChartComponent data={graphData}/>
-     <ChartComponent/>
+     <PieChartComponent data={graphData}/> */}
+     {/* <ChartComponent/> */}
      {/* <DataConverter/> */}
      <PrintAsPdf/>
 

@@ -5,6 +5,7 @@ import Switch from '@mui/material/Switch';
 import Box from '@mui/material/Box';
 import { Dialog, DialogContent } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import "./DynamicForm.css"
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -161,7 +162,8 @@ function DynamicForm({ postApi4, getApi1 }) {
           </Box>
         </DialogContent>
       </Dialog>
-      <form style={formContainerStyle} onSubmit={handleSubmit}>
+     <div className='Form-Container'>
+     <form style={formContainerStyle} onSubmit={handleSubmit}>
         {formData.map((field, index) => (
           <div key={index} style={formRowStyle}>
             <div style={formLabelColumnStyle}>
@@ -169,7 +171,7 @@ function DynamicForm({ postApi4, getApi1 }) {
                 style={{ fontSize: '13px', textTransform: 'capitalize', display: 'flex', justifyContent: 'end' }}
                 htmlFor={field.name}
               >
-                {field.name}
+                {field.name}:
               </label>
             </div>
             <div style={formInputColumnStyle}>
@@ -236,7 +238,7 @@ function DynamicForm({ postApi4, getApi1 }) {
         <div style={{
           display: "flex",
           justifyContent: "center",
-          gap: "17px"
+          gap: "13px"
         }}>
           <button style={formButtonStyle} type='submit'>
             save
@@ -246,6 +248,7 @@ function DynamicForm({ postApi4, getApi1 }) {
           </button>
         </div>
       </form>
+     </div>
     </>
   );
 }
@@ -279,7 +282,7 @@ const formInputColumnStyle = {
 };
 
 const formInputStyle = {
-  width: '100%',
+  width: '70%',
   padding: '10px',
   border: '1px solid #ccc',
   borderRadius: '5px',

@@ -80,10 +80,10 @@ function ReusableTable({ getApi1, setTableData, selectedRows, setSelectedRows, h
   };
 
   return (
-    <Paper style={{ width: '80%', margin: '0 auto', padding: '20px' }}>
+    <Paper style={{ width: '80%', margin: '0 auto', padding: '5px' }}>
       <TableContainer>
         <Table size="small">
-          <TableHead>
+          <TableHead >
             <TableRow>
               <TableCell padding="checkbox">
                 <Checkbox
@@ -150,7 +150,7 @@ function ReusableTable({ getApi1, setTableData, selectedRows, setSelectedRows, h
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        style={{ padding: '4px 8px' }}
+      
       />
     </Paper>
   );
