@@ -80,16 +80,17 @@ function ReusableTable({ getApi1, setTableData, selectedRows, setSelectedRows, h
   };
 
   return (
-    <Paper style={{ width: '80%', margin: '0 auto', padding: '5px' }}>
+    <Paper style={{ width: '100%', margin: '0 auto'}}>
       <TableContainer>
         <Table size="small">
-          <TableHead >
+          <TableHead style={{background:'whitesmoke',textTransform:"capitalize",fontWeight:'bold'}}>
             <TableRow>
               <TableCell padding="checkbox">
                 <Checkbox
                   checked={allSelected}
                   onChange={handleCheckboxChange}
                   inputProps={{ 'aria-label': 'select all' }}
+                  style={{fontWeight:'100'}}
                 />
               </TableCell>
               {Object.keys(tableData[0] || {})

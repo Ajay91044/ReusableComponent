@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import "./ReusableTableDataGrid"
 import { Draggable } from 'react-beautiful-dnd';
+import { Box } from '@mui/material';
+import "../App.css"
 
 function ReusableTableDataGrid({ tableData, setSelectedRow, newTableData }) {
   const [columns, setColumns] = useState([]);
@@ -51,7 +53,7 @@ function ReusableTableDataGrid({ tableData, setSelectedRow, newTableData }) {
   };
 
   return (
-    <div style={{ height: 400, width: '40%' ,marginLeft:'10px',marginTop:'10px'}}>
+    <div style={{ height: 400, width: '47%' ,marginLeft:'10px',marginTop:'10px'}}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -67,6 +69,20 @@ function ReusableTableDataGrid({ tableData, setSelectedRow, newTableData }) {
 
         columnFooterHeight={20} 
         Draggable
+        sx={{
+          '& .MuiDataGrid-columnHeaders': {
+            backgroundColor: 'whitesmoke',
+            color: '#333',
+            fontWeight: 'bold',
+          },
+          '& .MuiDataGrid-columnHeaderTitle': {
+            fontWeight: 'bold',
+          },
+          '& .MuiDataGrid-topContainer': {
+            backgroundColor: 'whitesmoke',
+          }
+        }}
+      
       />
     </div>
   );

@@ -47,7 +47,7 @@ function NewTable({ newTableData, setSelectedRow, tableData }) {
   };
 
   return (
-    <div style={{ height: 400, width: '40%',marginTop:'10px' }}>
+    <div style={{ height: 400, width: '47%',marginTop:'10px' }}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -60,7 +60,16 @@ function NewTable({ newTableData, setSelectedRow, tableData }) {
         rowSelectionModel={rowSelectionModel}
         rowHeight={40}
         columnHeaderHeight={40}
-        
+        sx={{
+          '& .MuiDataGrid-columnHeaders': {
+            backgroundColor: 'whitesmoke',
+            color: '#333',
+            fontWeight: 'bold',
+          },
+          '& .MuiDataGrid-columnHeaderTitle': {
+            fontWeight: 'bold',
+          },
+        }}
        
       />
     </div>
